@@ -75,7 +75,7 @@ class Ui_Dialog(object):
 
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
-        Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
+        Dialog.setWindowTitle(_translate("Dialog", "New Employee"))
         self.firstNameLabel.setText(_translate("Dialog", "First Name"))
         self.lastNameLabel.setText(_translate("Dialog", "Last Name"))
         self.birthdayLabel.setText(_translate("Dialog", "Birthday"))
@@ -83,3 +83,15 @@ class Ui_Dialog(object):
         self.salaryLabel.setText(_translate("Dialog", "Salary"))
         self.positionLabel.setText(_translate("Dialog", "Position"))
         self.pushButton.setText(_translate("Dialog", "Save"))
+
+
+
+# inherits from QtWidgets.QDialog
+class EmployeeDialog(QtWidgets.QDialog):
+
+    def __init__(self):
+        super(EmployeeDialog, self).__init__()
+        self.ui = Ui_Dialog()
+        self.ui.setupUi(self)
+
+

@@ -1,5 +1,5 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
-
+from new_employee import EmployeeDialog
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -160,6 +160,17 @@ class EmployeeWindow(QtWidgets.QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
 
+        self.ui.backButton.clicked.connect(self.back_button_clicked)
+        self.ui.newButton.clicked.connect(self.new_button_clicked)
 
+
+    def back_button_clicked(self):
+        self.hide()
+        self.mainMenu.show()
+
+    def new_button_clicked(self):
+        self.employeeDialog = EmployeeDialog()
+        result = self.employeeDialog.exec()
+        #exec() will return a value: either accepted or rejected
 
 

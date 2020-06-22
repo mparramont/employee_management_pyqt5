@@ -19,9 +19,9 @@ class Ui_MainWindow(object):
         self.gridLayout.setObjectName("gridLayout")
         spacerItem = QtWidgets.QSpacerItem(516, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.gridLayout.addItem(spacerItem, 0, 0, 1, 1)
-        self.pushButton = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton.setObjectName("pushButton")
-        self.gridLayout.addWidget(self.pushButton, 0, 1, 1, 1)
+        self.backButton = QtWidgets.QPushButton(self.centralwidget)
+        self.backButton.setObjectName("backButton")
+        self.gridLayout.addWidget(self.backButton, 0, 1, 1, 1)
         self.gridLayout_2.addLayout(self.gridLayout, 1, 0, 1, 2)
         self.gridLayout_2.setRowStretch(0, 20)
         self.gridLayout_2.setRowStretch(1, 1)
@@ -33,7 +33,7 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "Charts"))
-        self.pushButton.setText(_translate("MainWindow", "Back"))
+        self.backButton.setText(_translate("MainWindow", "Back"))
 
 
 
@@ -46,3 +46,14 @@ class ChartsWindow(QtWidgets.QMainWindow):
 
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
+
+        self.ui.backButton.clicked.connect(self.back_button_clicked)
+
+    def back_button_clicked(self):
+        self.hide()
+        self.mainMenu.show()
+
+
+    def back_button_clicked(self):
+        self.hide()
+        self.mainMenu.show()
