@@ -5,7 +5,7 @@ from mainmenu import MainWindow
 from database import Database
 
 if __name__ == "__main__":
-    import sys
+#    import sys
 #    app = QtWidgets.QApplication(sys.argv)
 
 
@@ -15,6 +15,13 @@ if __name__ == "__main__":
 
 #    sys.exit(app.exec_())
 
+#####################################
     # Demonstration of singleton: database can only be instantiated once
-    database1 = Database()
-    database2 = Database()
+#    database1 = Database()
+#    database2 = Database()
+
+####### TEST Database.py ###########
+    database = Database()
+
+    print(database.get_employee_full_info()[0])
+    print(database.get_employee_full_info()[1])
