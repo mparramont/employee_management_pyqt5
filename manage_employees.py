@@ -1,5 +1,6 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import *
+from PyQt5.QtCore import QEvent, Qt, QObject
 from new_employee import EmployeeDialog
 from database import Database
 
@@ -164,6 +165,8 @@ class EmployeeWindow(QtWidgets.QMainWindow):
 
         self.init_table()
 
+        self.ui.tableWidget.viewport().installEventFilter(self)
+
         self.ui.backButton.clicked.connect(self.back_button_clicked)
         self.ui.newButton.clicked.connect(self.new_button_clicked)
 
@@ -193,6 +196,37 @@ class EmployeeWindow(QtWidgets.QMainWindow):
         for row in range(no_rows):
             for col in range(no_columns):
                 self.ui.tableWidget.setItem(row, col, QTableWidgetItem(str(value_list[row][col])))
+
+
+
+
+    def eventFilter(self, obj, event):
+        if (obj == self.ui.tableWidget.viewport() and event.type() == QEvent.MouseButtonPress):
+            if event.button() == Qt.RightButton:
+                idx = self.ui.tableWidget.indexAt(event.pos())
+                if idx.isValid():
+                    deleteAction = QAction("Delete", self)
+                    deleteAction.triggered.connect(self.delete_action_triggered)
+                    modifyAction = QAction("Modify", self)
+                    modifyAction.triggered.connect(self.modify_action_triggered)
+
+                    contextMenu = QMenu(self)
+                    contextMenu.addAction(deleteAction)
+                    contextMenu.addAction(modifyAction)
+                    contextMenu.exec(event.globalPos())
+                    #event.globalPos() -> returns the position where the mouse is placed at the moment of RightClick
+
+
+        return QMainWindow.eventFilter(self, obj, event)
+
+    def delete_action_triggered(self):
+        print("Delete")
+
+    def modify_action_triggered(self):
+        print("Modify")
+
+
+
 
 
     def back_button_clicked(self):

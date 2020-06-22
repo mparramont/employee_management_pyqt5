@@ -28,7 +28,6 @@ class Database:
                     WHERE employee.id = log_salary.employee_id AND employee.id = log_position.employee_id
                     and log_salary.date = (SELECT max(date) FROM log_salary WHERE employee_id = employee.id)
                     and log_position.date = (SELECT max(date) FROM log_position WHERE employee_id = employee.id)"""
-
         res = query.exec(query_string)  # returns TRUE if query was executed successfully
 
         record = query.record()

@@ -14,7 +14,7 @@ https://github.com/terjnh/employee_management_pyqt5
 - [X] Database Class Creation
 - [X] Populating the employee table
 - [X] Change QTableWidget properties
-- [ ] Show a context menu
+- [X] Show a context menu
 - [ ] Implement trigger action
 - [ ] Salary History, Position History queries
 - [ ] Load Salary-position table
