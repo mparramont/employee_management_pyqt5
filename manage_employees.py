@@ -1,10 +1,12 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtWidgets import *
 from new_employee import EmployeeDialog
+from database import Database
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(854, 499)
+        MainWindow.resize(960, 640)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.gridLayout_3 = QtWidgets.QGridLayout(self.centralwidget)
@@ -160,8 +162,37 @@ class EmployeeWindow(QtWidgets.QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
 
+        self.init_table()
+
         self.ui.backButton.clicked.connect(self.back_button_clicked)
         self.ui.newButton.clicked.connect(self.new_button_clicked)
+
+
+    def init_table(self):
+        self.db = Database()
+        employee_list = self.db.get_employee_full_info()
+        header_list = employee_list[0]
+        value_list = employee_list[1]
+
+        no_rows = len(value_list)
+        no_columns = len(header_list)
+
+        self.ui.tableWidget.setRowCount(no_rows)
+        self.ui.tableWidget.setColumnCount(no_columns)
+
+        self.ui.tableWidget.setHorizontalHeaderLabels(tuple(header_list))
+        self.ui.tableWidget.setSelectionMode(QAbstractItemView.SingleSelection)
+        # stretch table to fill the tableWidget
+        self.ui.tableWidget.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
+        # Able to select the whole row
+        self.ui.tableWidget.setSelectionBehavior(QAbstractItemView.SelectRows)
+        # Hide database internal ID column
+        self.ui.tableWidget.verticalHeader().hide()
+
+        #Load data into the table
+        for row in range(no_rows):
+            for col in range(no_columns):
+                self.ui.tableWidget.setItem(row, col, QTableWidgetItem(str(value_list[row][col])))
 
 
     def back_button_clicked(self):

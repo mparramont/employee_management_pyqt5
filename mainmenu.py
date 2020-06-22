@@ -8,7 +8,7 @@ class Ui_MainWindow(object):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(300, 327)
         MainWindow.setMinimumSize(QtCore.QSize(250, 300))
-        MainWindow.setMaximumSize(QtCore.QSize(300, 400))
+        MainWindow.setMaximumSize(QtCore.QSize(350, 350))
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.gridLayout = QtWidgets.QGridLayout(self.centralwidget)

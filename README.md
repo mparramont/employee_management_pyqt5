@@ -7,15 +7,22 @@ https://github.com/terjnh/employee_management_pyqt5
 
 - [X] Launching the project
 - [X] QMainWindow communication using signal-slot
-- [ ] Windows communication
-- [ ] Navigating back
-- [ ] Create a new employee
-to be continued...
+- [X] Windows communication
+- [X] Navigating back
+- [X] Create a new employee
+- [X] Database Structure
+- [X] Database Class Creation
+- [X] Populating the employee table
+- [X] Change QTableWidget properties
+- [ ] Show a context menu
+- [ ] Implement trigger action
+- [ ] Salary History, Position History queries
+- [ ] Load Salary-position table
+- [ ] Change employee's salary
+- [ ] Change employee's position
+- [ ] Create a Qt resource
+etc.
 
-
-21 June 2020:
-- [X] in mainmenu.py, changed "MainWindow" title to "Main Menu"
-- [X] in manage_employees.py, changed "MainWindow" title to "Mange Employees"
 
 
 
