@@ -3,6 +3,7 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtCore import QEvent, Qt, QObject
 from new_employee import EmployeeDialog
 from database import Database
+from salary_position import EmployeeInfoWindow
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -208,6 +209,7 @@ class EmployeeWindow(QtWidgets.QMainWindow):
                     deleteAction = QAction("Delete", self)
                     deleteAction.triggered.connect(self.delete_action_triggered)
                     modifyAction = QAction("Modify", self)
+                    modifyAction.setObjectName(str(idx.row()))
                     modifyAction.triggered.connect(self.modify_action_triggered)
 
                     contextMenu = QMenu(self)
@@ -223,7 +225,16 @@ class EmployeeWindow(QtWidgets.QMainWindow):
         print("Delete")
 
     def modify_action_triggered(self):
-        print("Modify")
+        row = int(QObject.sender(self).objectName())
+
+        # id is placed at the 0th-column of database
+        id = int(self.ui.tableWidget.item(row, 0).text())
+
+        self.employeeInfoWindow = EmployeeInfoWindow(id)
+        self.employeeInfoWindow.show()
+
+        print("Modify Employee id: " + str(self.employeeInfoWindow.id))
+
 
 
 
