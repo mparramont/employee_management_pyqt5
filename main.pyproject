@@ -7,6 +7,7 @@
         "mainmenu.py",
         "charts.py",
         "change_salary_dialog.py",
-        "change_position_dialog.py"
+        "change_position_dialog.py",
+        "database.py"
     ]
 }
