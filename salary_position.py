@@ -97,4 +97,10 @@ class EmployeeInfoWindow(QtWidgets.QMainWindow):
         self.ui.setupUi(self)
         self.id = id
 
-        print(self.id)
+#        SELECT employee.first_name as "First Name", employee.last_name as "Last Name",
+#                        employee.department_name as "Department name", log_salary.salary as "Salary",
+#                        log_salary.reason as "Reason", log_salary.date as "Date"
+#        FROM employee, log_salary
+#        WHERE employee.id = log_salary.employee_id
+
+        # print(self.id)

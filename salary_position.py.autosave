@@ -96,5 +96,4 @@ class EmployeeInfoWindow(QtWidgets.QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
         self.id = id
-
         # print(self.id)
