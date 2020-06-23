@@ -16,11 +16,15 @@ https://github.com/terjnh/employee_management_pyqt5
 - [X] Change QTableWidget properties
 - [X] Show a context menu
 - [X] Implement trigger action
-- [ ] Salary History, Position History queries
-- [ ] Load Salary-position table
+- [X] Salary History, Position History queries
+- [X] Load Salary-position table
 - [ ] Change employee's salary
 - [ ] Change employee's position
 - [ ] Create a Qt resource
+- [ ] Translate Qt resource into code
+- [ ] Create an employee class
+- [ ] Create a calendar widget
+- [ ] Communicate between dialog and window
 etc.
 
 
