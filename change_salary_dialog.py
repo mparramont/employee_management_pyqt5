@@ -92,10 +92,9 @@ class SalaryDialog(QtWidgets.QDialog):
         self.ui = Ui_Dialog()
         self.ui.setupUi(self)
 
-        self.first_name = first_name
-        self.last_name = last_name
-        self.current_salary = current_salary
-
+        self.ui.lblFirstName.setText(first_name)
+        self.ui.lblLastName.setText(last_name)
+        self.ui.lblCurrentSalary.setText(current_salary)
 
         self.ui.saveButton.clicked.connect(self.save_button_clicked)
 

@@ -19,7 +19,7 @@ https://github.com/terjnh/employee_management_pyqt5
 - [X] Salary History, Position History queries
 - [X] Load Salary-position table
 - [X] Change employee's salary
-- [ ] Change employee's position
+- [X] Change employee's position
 - [ ] Create a Qt resource
 - [ ] Translate Qt resource into code
 - [ ] Create an employee class
