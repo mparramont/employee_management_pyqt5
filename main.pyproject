@@ -8,6 +8,7 @@
         "charts.py",
         "change_salary_dialog.py",
         "change_position_dialog.py",
-        "database.py"
+        "database.py",
+        "resources.py"
     ]
 }

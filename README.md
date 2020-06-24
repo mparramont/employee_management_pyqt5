@@ -20,8 +20,8 @@ https://github.com/terjnh/employee_management_pyqt5
 - [X] Load Salary-position table
 - [X] Change employee's salary
 - [X] Change employee's position
-- [ ] Create a Qt resource
-- [ ] Translate Qt resource into code
+- [X] Create a Qt resource
+- [X] Translate Qt resource into code
 - [ ] Create an employee class
 - [ ] Create a calendar widget
 - [ ] Communicate between dialog and window
