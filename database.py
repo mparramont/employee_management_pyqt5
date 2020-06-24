@@ -1,5 +1,6 @@
 from PyQt5 import QtSql
 from PyQt5.QtSql import *
+from datetime import datetime
 
 # Singleton: can only instantiate it once
 class Database:
@@ -122,3 +123,19 @@ class Database:
             result_list.append(sublist)
 
         return [header_list, result_list]
+
+
+    ### insert into log_salary ###
+    def insert_new_salary(self, id, new_salary, reason):
+        query = QSqlQuery()
+
+        query.prepare("""insert into log_salary(employee_id, salary, date, reason)
+                        values(:e_id, :salary, :date, :reason)""")
+        query.bindValue(":e_id", id)
+        query.bindValue(":salary", new_salary)
+        # import datetime
+        query.bindValue(":date", datetime.today().strftime('%Y-%m-%d'))
+        query.bindValue(":reason", reason)
+
+        return query.exec()
+

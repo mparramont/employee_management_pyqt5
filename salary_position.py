@@ -1,6 +1,7 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import *
 from database import Database
+from change_salary_dialog import SalaryDialog
 
 
 class Ui_MainWindow(object):
@@ -92,6 +93,9 @@ class EmployeeInfoWindow(QtWidgets.QMainWindow):
 
         self.init_tables()
 
+        # connect change salary button to a SLOT
+        self.ui.changeSalaryButton.clicked.connect(self.change_salary_button_clicked)
+
 
     def init_tables(self):
         self.database = Database()
@@ -108,6 +112,7 @@ class EmployeeInfoWindow(QtWidgets.QMainWindow):
         no_rows = len(values_list)
         no_columns = len(header_list)
 
+        tableWidget.clear()
         tableWidget.setRowCount(no_rows)
         tableWidget.setColumnCount(no_columns)
 
@@ -124,4 +129,27 @@ class EmployeeInfoWindow(QtWidgets.QMainWindow):
         for row in range(no_rows):
             for col in range(no_columns):
                 tableWidget.setItem(row, col, QTableWidgetItem(str(values_list[row][col])))
+
+
+    def change_salary_button_clicked(self):
+        # self.ui.salaryTableWidget.rowCount - 1 : to get the last row of salaryTableWidget
+        last_row = self.ui.salaryTableWidget.rowCount() - 1
+
+        # SalaryDialog from change_salary_dialog
+        self.salaryDialog = SalaryDialog(self.ui.salaryTableWidget.item(last_row, 0).text(),
+            self.ui.salaryTableWidget.item(last_row, 1).text(),
+            self.ui.salaryTableWidget.item(last_row, 3).text())
+
+        result = self.salaryDialog.exec()
+
+        # waits for dialog to be accepted
+        if result == QtWidgets.QDialog.Accepted:
+            # Retrieve informaton from dialog, then update the table accordingly by inserting new row in log_salary
+            self.database.insert_new_salary(self.id, self.salaryDialog.new_salary, self.salaryDialog.reason)
+
+            # Re-initialize salary_log table
+            self.init_tables()
+
+
+
 

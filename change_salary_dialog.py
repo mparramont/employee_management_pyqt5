@@ -80,3 +80,37 @@ class Ui_Dialog(object):
         self.lineEditReason.setPlaceholderText(_translate("Dialog", "Optional"))
         self.newSalaryLabel.setText(_translate("Dialog", "New Salary"))
         self.saveButton.setText(_translate("Dialog", "Save"))
+
+
+
+
+class SalaryDialog(QtWidgets.QDialog):
+
+    def __init__(self, first_name, last_name, current_salary):
+        super(SalaryDialog, self).__init__()
+
+        self.ui = Ui_Dialog()
+        self.ui.setupUi(self)
+
+        self.first_name = first_name
+        self.last_name = last_name
+        self.current_salary = current_salary
+
+
+        self.ui.saveButton.clicked.connect(self.save_button_clicked)
+
+
+    def save_button_clicked(self):
+        self.new_salary = self.ui.lineEditNewSalary.text()
+        self.reason = self.ui.lineEditReason.text()
+
+        self.accept()
+
+
+
+
+
+
+
+
+
