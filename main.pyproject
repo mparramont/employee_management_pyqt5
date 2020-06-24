@@ -9,6 +9,6 @@
         "change_salary_dialog.py",
         "change_position_dialog.py",
         "database.py",
-        "resources.py"
+        "employee_full_info.py"
     ]
 }
