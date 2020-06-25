@@ -26,13 +26,17 @@ https://github.com/terjnh/employee_management_pyqt5
 - [X] Create a calendar widget
 - [X] Communicate between dialog and window
 - [X] Create employee - final
-- [ ] Create filters icon
-- [ ] Show-hide filters
-- [ ] Initialize fields map
+- [X] Create filters icon
+- [X] Show-hide filters
+- [X] Initialize fields map
 - [ ] Apply filters on table
 - [ ] Reset filters
-- [ ] Export table as .csv
-etc.
+- [ ] Export table as .
+- [ ] Delete employee
+- [ ] Insert valid data
+- [ ] Salary statistics chart
+- [ ] Total salary per department chart
+- [ ] Conclusion
 
 
 

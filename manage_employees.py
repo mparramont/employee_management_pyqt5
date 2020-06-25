@@ -169,6 +169,8 @@ class EmployeeWindow(QtWidgets.QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
 
+        self.init_field_map()
+
         self.init_table()
 
         self.ui.tableWidget.viewport().installEventFilter(self)
@@ -176,6 +178,39 @@ class EmployeeWindow(QtWidgets.QMainWindow):
         self.ui.backButton.clicked.connect(self.back_button_clicked)
         self.ui.newButton.clicked.connect(self.new_button_clicked)
         self.ui.toolButton.clicked.connect(self.filters_button_clicked)
+        self.ui.applyButton.clicked.connect(self.apply_button_clicked)
+
+
+    def init_field_map(self):
+        self.fieldMap = {}
+        self.fieldMap[self.ui.idLineEdit.objectName()] = "employee.id"
+        self.fieldMap[self.ui.firstNameLineEdit.objectName()] = "employee.first_name"
+        self.fieldMap[self.ui.lastNameLineEdit.objectName()] = "employee.last_name"
+        self.fieldMap[self.ui.birthdayLineEdit.objectName()] = "employee.birthday"
+        self.fieldMap[self.ui.departmentLineEdit.objectName()] = "employee.department_name"
+        self.fieldMap[self.ui.salaryLineEdit.objectName()] = "log_salary.salary"
+        self.fieldMap[self.ui.positionLineEdit.objectName()] = "log_position.position"
+
+    def apply_button_clicked(self):
+        condition_list = []
+
+        if self.ui.idLineEdit.text():  #if idLineEdit is NOT empty
+            condition_list.append([self.fieldMap[self.ui.idLineEdit.objectName()], "\"" + self.ui.idLineEdit.text() + "\""])
+        if self.ui.firstNameLineEdit.text():
+            condition_list.append([self.fieldMap[self.ui.firstNameLineEdit.objectName()], "\"" + self.ui.firstNameLineEdit.text() + "\""])
+        if self.ui.lastNameLineEdit.text():
+            condition_list.append([self.fieldMap[self.ui.lastNameLineEdit.objectName()], "\"" + self.ui.lastNameLineEdit.text() + "\""])
+        if self.ui.birthdayLineEdit.text():
+            condition_list.append([self.fieldMap[self.ui.birthdayLineEdit.objectName()], "\"" + self.ui.birthdayLineEdit.text() + "\""])
+        if self.ui.departmentLineEdit.text():
+            condition_list.append([self.fieldMap[self.ui.departmentLineEdit.objectName()], "\"" + self.ui.departmentLineEdit.text() + "\""])
+        if self.ui.salaryLineEdit.text():
+            condition_list.append([self.fieldMap[self.ui.salaryLineEdit.objectName()], "\"" + self.ui.salaryLineEdit.text() + "\""])
+        if self.ui.positionLineEdit.text():
+            condition_list.append([self.fieldMap[self.ui.positionLineEdit.objectName()], "\"" + self.ui.positionLineEdit.text() + "\""])
+
+        # Visualise the mapped lists within a list (2D List)
+        print(condition_list)
 
 
     def filters_button_clicked(self):
