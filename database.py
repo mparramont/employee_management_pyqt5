@@ -89,7 +89,8 @@ class Database:
 
 
 
-    def get_employee_full_info(self):
+    # conditionList is for filtering query results
+    def get_employee_full_info(self, conditionList):
         query = QSqlQuery()
 
         #create string to story query
@@ -100,6 +101,35 @@ class Database:
                     WHERE employee.id = log_salary.employee_id AND employee.id = log_position.employee_id
                     and log_salary.date = (SELECT max(date) FROM log_salary WHERE employee_id = employee.id)
                     and log_position.date = (SELECT max(date) FROM log_position WHERE employee_id = employee.id)"""
+
+        ### SET THE CONDITION (for filtering)
+        ## conditionList example
+        ## [["id", 2], ["first_name", "Paul"]]
+        condition = ""
+        list_length = len(conditionList)
+
+        for i in range(list_length - 1):
+            condition += conditionList[i][0]
+            condition += " = "
+            condition += conditionList[i][1]
+            condition += " and "
+
+        # for the last condition, we don't need 'and'
+        if list_length > 0:
+            condition += conditionList[list_length - 1][0]
+            condition += " = "
+            condition += conditionList[list_length - 1][1]
+
+        if condition:  # if condition is not Empty
+            query_string += " and " + condition
+
+        print(query_string)
+
+
+
+
+
+
         res = query.exec(query_string)  # returns TRUE if query was executed successfully
 
         record = query.record()

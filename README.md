@@ -29,7 +29,7 @@ https://github.com/terjnh/employee_management_pyqt5
 - [X] Create filters icon
 - [X] Show-hide filters
 - [X] Initialize fields map
-- [ ] Apply filters on table
+- [X] Apply filters on table
 - [ ] Reset filters
 - [ ] Export table as .
 - [ ] Delete employee

@@ -212,6 +212,10 @@ class EmployeeWindow(QtWidgets.QMainWindow):
         # Visualise the mapped lists within a list (2D List)
         print(condition_list)
 
+        # Pass condition_list as parameter into reload_table()
+        self.reload_table(condition_list)
+
+
 
     def filters_button_clicked(self):
         if self.ui.widget.isVisible():
@@ -225,7 +229,7 @@ class EmployeeWindow(QtWidgets.QMainWindow):
 
     def init_table(self):
         self.db = Database()
-        employee_list = self.db.get_employee_full_info()
+        employee_list = self.db.get_employee_full_info([])  # pass empty conditionList as parameter when initializing table
         header_list = employee_list[0]
         value_list = employee_list[1]
 
@@ -248,6 +252,32 @@ class EmployeeWindow(QtWidgets.QMainWindow):
         for row in range(no_rows):
             for col in range(no_columns):
                 self.ui.tableWidget.setItem(row, col, QTableWidgetItem(str(value_list[row][col])))
+
+
+
+    def reload_table(self, conditionList):
+        # clear table -> setRowCount to Zero
+        self.ui.tableWidget.setRowCount(0)
+
+        # Unlike in init_table([]), where an empty list is passed as a parameter, a conditionList is passed as a
+        # parameter into get_employee_full_info such that it can be appended to the SQL query to narrow the query
+        # to more specific parameters
+        result_list = self.db.get_employee_full_info(conditionList)
+
+        header_list = result_list[0]
+        value_list = result_list[1]
+
+        no_rows = len(value_list)
+        no_columns = len(header_list)
+
+        self.ui.tableWidget.setRowCount(no_rows)
+        self.ui.tableWidget.setColumnCount(no_columns)
+
+        #Load data into the table
+        for row in range(no_rows):
+            for col in range(no_columns):
+                self.ui.tableWidget.setItem(row, col, QTableWidgetItem(str(value_list[row][col])))
+
 
 
 
