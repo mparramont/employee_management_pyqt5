@@ -175,6 +175,17 @@ class EmployeeWindow(QtWidgets.QMainWindow):
 
         self.ui.backButton.clicked.connect(self.back_button_clicked)
         self.ui.newButton.clicked.connect(self.new_button_clicked)
+        self.ui.toolButton.clicked.connect(self.filters_button_clicked)
+
+
+    def filters_button_clicked(self):
+        if self.ui.widget.isVisible():
+            self.ui.widget.hide()
+            self.ui.toolButton.setIcon(QtGui.QIcon("resources/ic_arrow_down_30px.jpg"))
+        else:
+            self.ui.widget.show()
+            self.ui.toolButton.setIcon(QtGui.QIcon("resources/ic_arrow_up_30px.jpg"))
+
 
 
     def init_table(self):
