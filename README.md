@@ -22,9 +22,16 @@ https://github.com/terjnh/employee_management_pyqt5
 - [X] Change employee's position
 - [X] Create a Qt resource
 - [X] Translate Qt resource into code
-- [ ] Create an employee class
-- [ ] Create a calendar widget
+- [X] Create an employee class
+- [X] Create a calendar widget
 - [ ] Communicate between dialog and window
+- [ ] Create employee - final
+- [ ] Create filters icon
+- [ ] Show-hide filters
+- [ ] Initialize fields map
+- [ ] Apply filters on table
+- [ ] Reset filters
+- [ ] Export table as .csv
 etc.
 
 
