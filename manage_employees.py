@@ -4,6 +4,7 @@ from PyQt5.QtCore import QEvent, Qt, QObject
 from new_employee import EmployeeDialog
 from database import Database
 from salary_position import EmployeeInfoWindow
+import resources
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -18,6 +19,10 @@ class Ui_MainWindow(object):
         self.toolButton = QtWidgets.QToolButton(self.centralwidget)
         self.toolButton.setObjectName("toolButton")
         self.upperGridLayout.addWidget(self.toolButton, 0, 0, 1, 1)
+
+        self.toolButton.setIcon(QtGui.QIcon("resources/ic_arrow_up_30px.jpg"))
+        self.toolButton.setAutoRaise(True)   # border of button will only show when mouseHover
+
         spacerItem = QtWidgets.QSpacerItem(638, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.upperGridLayout.addItem(spacerItem, 0, 1, 1, 1)
         self.gridLayout_3.addLayout(self.upperGridLayout, 0, 0, 1, 1)

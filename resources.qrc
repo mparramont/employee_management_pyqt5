@@ -1,5 +1,7 @@
 <RCC>
     <qresource prefix="/img">
         <file>resources/ic_calendar_30px.png</file>
+        <file>resources/ic_arrow_down_30px.jpg</file>
+        <file>resources/ic_arrow_up_30px.jpg</file>
     </qresource>
 </RCC>
