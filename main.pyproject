@@ -9,6 +9,7 @@
         "change_salary_dialog.py",
         "change_position_dialog.py",
         "database.py",
-        "employee_full_info.py"
+        "employee_full_info.py",
+        "calendar_dialog.py"
     ]
 }

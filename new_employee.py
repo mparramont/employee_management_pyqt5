@@ -2,6 +2,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 import resources
 
 from employee_full_info import EmployeeFullInfo
+from calendar_dialog import CalendarDialog
 
 
 class Ui_Dialog(object):
@@ -91,16 +92,35 @@ class EmployeeDialog(QtWidgets.QDialog):
         self.ui.setupUi(self)
 
         self.employeeInfo = None
+        self.birthday = None
 
         self.ui.saveButton.clicked.connect(self.save_button_clicked)
         self.ui.birthdayToolButton.clicked.connect(self.birthday_button_clicked)
 
         def save_button_clicked(self):
-            pass
+
+            ## TODO: check if each lineEdit is empty
+
+            # set employee info
+            self.employeeInfo = EmployeeFullInfo(
+                self.ui.firstNameLineEdit.text(),
+                self.ui.lastNameLineEdit.text(),
+                self.birthday,
+                self.ui.departmentLineEdit.text(),
+                self.ui.salaryLineEdit.text(),
+                self.ui.positionLineEdit.text())
+
+            self.accept()
+
 
 
         def birthday_button_clicked(self):
-            pass
+            self.calendarDialog = CalendarDialog()
+            result = self.calendarDialog.exec()
+
+            if result == QtWidgets.QDialog.Accepted:
+                # self.calendarDialog.date is a parameter initialized in CalendarDialog constructor
+                self.birthday = self.calendarDialog.date
 
 
 

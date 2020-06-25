@@ -249,4 +249,16 @@ class EmployeeWindow(QtWidgets.QMainWindow):
         result = self.employeeDialog.exec()
         #exec() will return a value: either accepted or rejected
 
+        if result == QtWidgets.QDialog.Accepted:
+
+
+
+
+
+
+
+
+
+
+
 

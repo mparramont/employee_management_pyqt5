@@ -24,7 +24,7 @@ https://github.com/terjnh/employee_management_pyqt5
 - [X] Translate Qt resource into code
 - [X] Create an employee class
 - [X] Create a calendar widget
-- [ ] Communicate between dialog and window
+- [X] Communicate between dialog and window
 - [ ] Create employee - final
 - [ ] Create filters icon
 - [ ] Show-hide filters
