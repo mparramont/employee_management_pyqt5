@@ -97,30 +97,30 @@ class EmployeeDialog(QtWidgets.QDialog):
         self.ui.saveButton.clicked.connect(self.save_button_clicked)
         self.ui.birthdayToolButton.clicked.connect(self.birthday_button_clicked)
 
-        def save_button_clicked(self):
+    def save_button_clicked(self):
 
-            ## TODO: check if each lineEdit is empty
+        ## TODO: check if each lineEdit is empty
 
-            # set employee info
-            self.employeeInfo = EmployeeFullInfo(
-                self.ui.firstNameLineEdit.text(),
-                self.ui.lastNameLineEdit.text(),
-                self.birthday,
-                self.ui.departmentLineEdit.text(),
-                self.ui.salaryLineEdit.text(),
-                self.ui.positionLineEdit.text())
+        # set employee info
+        self.employeeInfo = EmployeeFullInfo(
+            self.ui.firstNameLineEdit.text(),
+            self.ui.lastNameLineEdit.text(),
+            self.birthday,
+            self.ui.departmentLineEdit.text(),
+            self.ui.salaryLineEdit.text(),
+            self.ui.positionLineEdit.text())
 
-            self.accept()
+        self.accept()
 
 
 
-        def birthday_button_clicked(self):
-            self.calendarDialog = CalendarDialog()
-            result = self.calendarDialog.exec()
+    def birthday_button_clicked(self):
+        self.calendarDialog = CalendarDialog()
+        result = self.calendarDialog.exec()
 
-            if result == QtWidgets.QDialog.Accepted:
-                # self.calendarDialog.date is a parameter initialized in CalendarDialog constructor
-                self.birthday = self.calendarDialog.date
+        if result == QtWidgets.QDialog.Accepted:
+            # self.calendarDialog.date is a parameter initialized in CalendarDialog constructor
+            self.birthday = self.calendarDialog.date
 
 
 

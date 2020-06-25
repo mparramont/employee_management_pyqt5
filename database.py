@@ -153,3 +153,61 @@ class Database:
 
         return query.exec()
 
+
+    ### get id of last employee which was added into database
+    def get_last_employee_id(self):
+        query = QSqlQuery()
+
+        res = query.exec("""select max(id) from employee""")
+
+        # there are existing employees
+        if query.next():
+            return query.value(0)
+
+        return 0    # this should not return, because we will always insert an employee, before we insert anything into log_salary, or log_position
+
+
+    ### insert new employee ###
+    def insert_new_employee(self, employeeFullInfo):
+        query = QSqlQuery()
+
+        # Use a prepare statement, as we can use some variables in place of values
+        query.prepare("""insert into employee(first_name, last_name, birthday, department_name)
+                        values(:fn, :ln, :birthday, :department)""")
+
+        query.bindValue(":fn", employeeFullInfo.first_name)
+        query.bindValue(":ln", employeeFullInfo.last_name)
+        query.bindValue(":birthday", employeeFullInfo.birthday)
+        query.bindValue(":department", employeeFullInfo.department)
+
+        query.exec()
+
+
+        # we also need to input a salary and position for every new employee
+        id = self.get_last_employee_id()
+        query.prepare("""insert into log_position(employee_id, position, date)
+                        values(:e_id, :pos, :date)""")
+        query.bindValue(":e_id", id)
+        query.bindValue(":pos", employeeFullInfo.position)
+        query.bindValue(":date", datetime.today().strftime('%Y-%m-%d'))
+        query.exec()
+
+        query.prepare("""insert into log_salary(employee_id, salary, date)
+                        values(:e_id, :salary, :date)""")
+        query.bindValue(":e_id", id)
+        query.bindValue(":salary", employeeFullInfo.salary)
+        query.bindValue(":date", datetime.today().strftime('%Y-%m-%d'))
+        query.exec()
+
+
+
+
+
+
+
+
+
+
+
+
+

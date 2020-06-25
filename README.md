@@ -25,7 +25,7 @@ https://github.com/terjnh/employee_management_pyqt5
 - [X] Create an employee class
 - [X] Create a calendar widget
 - [X] Communicate between dialog and window
-- [ ] Create employee - final
+- [X] Create employee - final
 - [ ] Create filters icon
 - [ ] Show-hide filters
 - [ ] Initialize fields map
