@@ -82,7 +82,6 @@ class ChartsWindow(QtWidgets.QMainWindow):
         self.ui.backButton.clicked.connect(self.back_button_clicked)
 
 
-
     def load_first_series(self):
         # obtain result_list from database.py Database class -> get_salary_statistics function
         resultList = self.database.get_salary_statistics()
