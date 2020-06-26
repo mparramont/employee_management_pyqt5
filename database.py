@@ -249,6 +249,7 @@ class Database:
         query.exec()
 
 
+    ## for charts.py
     def get_salary_statistics(self):
         query = QSqlQuery()
         # result_list will contain [min salary, max salary, average salary]
@@ -266,10 +267,31 @@ class Database:
         if query.next():
             result_list[0] = query.value(0)
 
-        print(result_list)
+        print("Salary statistics: " + str(result_list))
         return result_list
 
 
+    ## for charts.py
+    def get_total_department_salaries(self):
+        query = QSqlQuery()
+
+        query.exec("""SELECT employee.department_name, sum(log_salary.salary)
+                        FROM employee, log_salary
+                        WHERE log_salary.employee_id = employee.id
+                        GROUP BY employee.department_name""")
+
+        rec = query.record()
+        col_number = rec.count()
+        list = []
+
+        while query.next():
+            sublist = []
+            for i in range(col_number):
+                sublist.append(query.value(i))
+            list.append(sublist)
+
+        print("Total Department salaries: " + str(list))
+        return list
 
 
 

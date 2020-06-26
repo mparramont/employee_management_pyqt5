@@ -35,7 +35,7 @@ https://github.com/terjnh/employee_management_pyqt5
 - [X] Delete employee
 - [X] Insert valid data
 - [X] Salary statistics chart
-- [ ] Total salary per department chart
+- [X] Total salary per department chart
 - [ ] Conclusion
 
 

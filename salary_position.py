@@ -150,6 +150,7 @@ class EmployeeInfoWindow(QtWidgets.QMainWindow):
             self.database.insert_new_salary(self.id, self.salaryDialog.new_salary, self.salaryDialog.reason)
 
             # Re-initialize salary_log table
+            print("reinitializing salary_log table")
             self.init_tables()
 
 

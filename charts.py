@@ -67,16 +67,21 @@ class ChartsWindow(QtWidgets.QMainWindow):
         self.secondSeries = QPieSeries()
 
         self.load_first_series()
+        self.load_second_series()
 
         self.firstChart.addSeries(self.firstSeries)
         self.firstChart.setTitle("Salary Statistics")
+        self.secondChart.addSeries(self.secondSeries)
+        self.secondChart.setTitle("Total Salary per Department")
 
         self.firstChartView = QChartView(self.firstChart) #(self.firstChart) is the parent
         self.firstChartView.setRenderHint(QPainter.Antialiasing)
+        self.secondChartView = QChartView(self.secondChart)
+        self.secondChartView.setRenderHint(QPainter.Antialiasing)
 
         # add chartview to layout
         self.ui.firstLayout.addWidget(self.firstChartView)
-
+        self.ui.secondLayout.addWidget(self.secondChartView)
 
 
         self.ui.backButton.clicked.connect(self.back_button_clicked)
@@ -97,6 +102,15 @@ class ChartsWindow(QtWidgets.QMainWindow):
         self.firstSeries.append(minBarSet)
         self.firstSeries.append(avgBarSet)
         self.firstSeries.append(maxBarSet)
+
+
+    def load_second_series(self):
+        result_list = self.database.get_total_department_salaries()
+
+        for entry in result_list:
+            self.secondSeries.append(entry[0], entry[1])
+
+
 
 
     def back_button_clicked(self):
