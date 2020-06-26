@@ -249,6 +249,29 @@ class Database:
         query.exec()
 
 
+    def get_salary_statistics(self):
+        query = QSqlQuery()
+        # result_list will contain [min salary, max salary, average salary]
+        result_list = [0, 0, 0]
+
+        res = query.exec("""select max(salary) from log_salary""")
+        if query.next():
+            result_list[2] = query.value(0)
+
+        query.exec("""select avg(salary) from log_salary""")
+        if query.next():
+            result_list[1] = query.value(0)
+
+        query.exec("""select min(salary) from log_salary""")
+        if query.next():
+            result_list[0] = query.value(0)
+
+        print(result_list)
+        return result_list
+
+
+
+
 
 
 
