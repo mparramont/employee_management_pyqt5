@@ -5,6 +5,7 @@ from new_employee import EmployeeDialog
 from database import Database
 from salary_position import EmployeeInfoWindow
 import resources
+import csv
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -180,6 +181,44 @@ class EmployeeWindow(QtWidgets.QMainWindow):
         self.ui.toolButton.clicked.connect(self.filters_button_clicked)
         self.ui.applyButton.clicked.connect(self.apply_button_clicked)
         self.ui.resetButton.clicked.connect(self.reset_button_clicked)
+        self.ui.exportButton.clicked.connect(self.export_button_clicked)
+
+
+
+    ### Export Button clicked SLOT
+    def export_button_clicked(self):
+        # user prompted with dialog, he can choose the path to save the file
+        path = QFileDialog.getSaveFileName(self, 'Save File', '', 'CSV(*.csv)')
+
+        print(path)
+        print(path[0])
+        # check that path is NOT NULL
+        if path:
+            with open(str(path[0]), 'w+', newline='') as stream:
+                writer = csv.writer(stream)
+
+                # write the header
+                row_data = []
+                for col in range(self.ui.tableWidget.columnCount()):
+                    row_data.append(self.ui.tableWidget.horizontalHeaderItem(col).text())
+
+                writer.writerow(row_data)
+
+                # write the values
+                for row in range(self.ui.tableWidget.rowCount()):
+                    row_data = []
+
+                    for col in range(self.ui.tableWidget.columnCount()):
+                        item = self.ui.tableWidget.item(row, col)
+                        if item is not None:
+                            row_data.append(item.text())
+                        else:
+                            row_data.append('')
+                    writer.writerow(row_data)
+
+
+
+
 
 
     def init_field_map(self):

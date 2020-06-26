@@ -30,8 +30,8 @@ https://github.com/terjnh/employee_management_pyqt5
 - [X] Show-hide filters
 - [X] Initialize fields map
 - [X] Apply filters on table
-- [ ] Reset filters
-- [ ] Export table as .
+- [X] Reset filters
+- [X] Export table as csv
 - [ ] Delete employee
 - [ ] Insert valid data
 - [ ] Salary statistics chart
