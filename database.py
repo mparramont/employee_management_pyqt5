@@ -99,8 +99,8 @@ class Database:
                     log_salary.salary as "Salary", log_position.position as "Position"
                     FROM employee, log_salary, log_position
                     WHERE employee.id = log_salary.employee_id AND employee.id = log_position.employee_id
-                    and log_salary.date = (SELECT max(date) FROM log_salary WHERE employee_id = employee.id)
-                    and log_position.date = (SELECT max(date) FROM log_position WHERE employee_id = employee.id)"""
+                    AND log_salary.date = (SELECT max(date) FROM log_salary WHERE employee_id = employee.id)
+                    AND log_position.date = (SELECT max(date) FROM log_position WHERE employee_id = employee.id)"""
 
         ### SET THE CONDITION (for filtering)
         ## conditionList example
@@ -230,7 +230,23 @@ class Database:
         query.exec()
 
 
+    ### delete employee ###
+    def delete_employee(self, id):
+        query = QSqlQuery()
 
+        query.prepare("""delete from employee where id = :id""")
+        query.bindValue(":id", id)
+        query.exec()
+
+        # delete employee's record from log_salary
+        query.prepare("""delete from log_salary where employee_id = :id""")
+        query.bindValue(":id", id)
+        query.exec()
+
+        # delete employee's record from log_position
+        query.prepare("""delete from log_position where employee_id = :id""")
+        query.bindValue(":id", id)
+        query.exec()
 
 
 

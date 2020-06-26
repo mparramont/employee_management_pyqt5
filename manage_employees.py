@@ -350,6 +350,7 @@ class EmployeeWindow(QtWidgets.QMainWindow):
                 idx = self.ui.tableWidget.indexAt(event.pos())
                 if idx.isValid():
                     deleteAction = QAction("Delete", self)
+                    deleteAction.setObjectName(str(idx.row()))
                     deleteAction.triggered.connect(self.delete_action_triggered)
                     modifyAction = QAction("Modify", self)
                     modifyAction.setObjectName(str(idx.row()))
@@ -364,9 +365,26 @@ class EmployeeWindow(QtWidgets.QMainWindow):
 
         return QMainWindow.eventFilter(self, obj, event)
 
-    def delete_action_triggered(self):
-        print("Delete")
 
+    ## Delete employee SLOT
+    def delete_action_triggered(self):
+        reply = QMessageBox.question(self, "Delete", "Are you sure you want to delete this employee?",
+                                            QMessageBox.Yes | QMessageBox.No)
+
+        if reply == QMessageBox.Yes:
+            # QObject.sender(self) is the deleteAction, objectName() is the str(idx.row())
+            row = int(QObject.sender(self).objectName())
+
+            print("DEBUG: Employee " + self.ui.tableWidget.item(row, 1).text() + " " + self.ui.tableWidget.item(row, 2).text() + " deleted")
+            # delete employee from database
+            ## select employee from row which was clicked, at column 0
+            self.db.delete_employee(self.ui.tableWidget.item(row, 0).text())
+            self.ui.tableWidget.removeRow(row)
+
+
+
+
+    ## Modify employee SLOT
     def modify_action_triggered(self):
         row = int(QObject.sender(self).objectName())
 
@@ -376,7 +394,7 @@ class EmployeeWindow(QtWidgets.QMainWindow):
         self.employeeInfoWindow = EmployeeInfoWindow(id)
         self.employeeInfoWindow.show()
 
-        print("Modify Employee id: " + str(self.employeeInfoWindow.id))
+        print("DEBUG: Modify Employee id: " + str(self.employeeInfoWindow.id))
 
 
 

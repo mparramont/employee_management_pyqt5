@@ -32,7 +32,7 @@ https://github.com/terjnh/employee_management_pyqt5
 - [X] Apply filters on table
 - [X] Reset filters
 - [X] Export table as csv
-- [ ] Delete employee
+- [X] Delete employee
 - [ ] Insert valid data
 - [ ] Salary statistics chart
 - [ ] Total salary per department chart
