@@ -179,6 +179,7 @@ class EmployeeWindow(QtWidgets.QMainWindow):
         self.ui.newButton.clicked.connect(self.new_button_clicked)
         self.ui.toolButton.clicked.connect(self.filters_button_clicked)
         self.ui.applyButton.clicked.connect(self.apply_button_clicked)
+        self.ui.resetButton.clicked.connect(self.reset_button_clicked)
 
 
     def init_field_map(self):
@@ -190,6 +191,11 @@ class EmployeeWindow(QtWidgets.QMainWindow):
         self.fieldMap[self.ui.departmentLineEdit.objectName()] = "employee.department_name"
         self.fieldMap[self.ui.salaryLineEdit.objectName()] = "log_salary.salary"
         self.fieldMap[self.ui.positionLineEdit.objectName()] = "log_position.position"
+
+
+
+
+    ### FILTERS: Apply and Reset Button Clicked SLOTS ###
 
     def apply_button_clicked(self):
         condition_list = []
@@ -214,6 +220,23 @@ class EmployeeWindow(QtWidgets.QMainWindow):
 
         # Pass condition_list as parameter into reload_table()
         self.reload_table(condition_list)
+
+
+    # Clear all the lineEdits and reset tableWidget to show all employees
+    def reset_button_clicked(self):
+        self.ui.idLineEdit.clear()
+        self.ui.firstNameLineEdit.clear()
+        self.ui.lastNameLineEdit.clear()
+        self.ui.birthdayLineEdit.clear()
+        self.ui.departmentLineEdit.clear()
+        self.ui.salaryLineEdit.clear()
+        self.ui.positionLineEdit.clear()
+
+        self.reload_table([])
+
+
+
+
 
 
 
