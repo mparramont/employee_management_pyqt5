@@ -164,7 +164,7 @@ class Database:
         query.bindValue(":e_id", id)
         query.bindValue(":salary", new_salary)
         # import datetime
-        query.bindValue(":date", datetime.today().strftime('%Y-%m-%d'))
+        query.bindValue(":date", datetime.today().strftime('%Y-%m-%d %H:%M:%S'))
         query.bindValue(":reason", reason)
 
         return query.exec()
@@ -179,7 +179,7 @@ class Database:
         query.bindValue(":e_id", id)
         query.bindValue(":position", new_position)
         # import datetime
-        query.bindValue(":date", datetime.today().strftime('%Y-%m-%d'))
+        query.bindValue(":date", datetime.today().strftime('%Y-%m-%d %H:%M:%S'))
 
         return query.exec()
 
@@ -219,14 +219,14 @@ class Database:
                         values(:e_id, :pos, :date)""")
         query.bindValue(":e_id", id)
         query.bindValue(":pos", employeeFullInfo.position)
-        query.bindValue(":date", datetime.today().strftime('%Y-%m-%d'))
+        query.bindValue(":date", datetime.today().strftime('%Y-%m-%d %H:%M:%S'))
         query.exec()
 
         query.prepare("""insert into log_salary(employee_id, salary, date)
                         values(:e_id, :salary, :date)""")
         query.bindValue(":e_id", id)
         query.bindValue(":salary", employeeFullInfo.salary)
-        query.bindValue(":date", datetime.today().strftime('%Y-%m-%d'))
+        query.bindValue(":date", datetime.today().strftime('%Y-%m-%d %H:%M:%S'))
         query.exec()
 
 

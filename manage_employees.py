@@ -413,6 +413,7 @@ class EmployeeWindow(QtWidgets.QMainWindow):
         if result == QtWidgets.QDialog.Accepted:
             # self.employeeDialog.employeeInfo : this is EmployeeFullInfo class from employee_full_info.py. This class is passed as a parameter into db.insert_new_employee
             self.db.insert_new_employee(self.employeeDialog.employeeInfo)
+            self.reload_table([])
 
 
 
