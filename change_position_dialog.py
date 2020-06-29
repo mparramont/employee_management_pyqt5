@@ -21,6 +21,8 @@ class Ui_Dialog(object):
         self.formLayout.setContentsMargins(20, 20, 20, 20)
         self.formLayout.setVerticalSpacing(40)
         self.formLayout.setObjectName("formLayout")
+        self.formLayout.setLabelAlignment(QtCore.Qt.AlignRight)
+
         self.firstNameLabel = QtWidgets.QLabel(Dialog)
         self.firstNameLabel.setObjectName("firstNameLabel")
         self.formLayout.setWidget(0, QtWidgets.QFormLayout.LabelRole, self.firstNameLabel)
