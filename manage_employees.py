@@ -138,6 +138,34 @@ class Ui_MainWindow(object):
         self.gridLayout_3.addLayout(self.bottomGridLayout, 3, 0, 1, 1)
         MainWindow.setCentralWidget(self.centralwidget)
 
+
+
+        self.centralwidget.setStyleSheet("""
+            QWidget#centralwidget {
+                background-color: rgb(55, 64, 88);
+            }
+
+            QLabel {
+                color: white;
+                font-size: 12pt;
+                font-family: Verdana;
+            }
+
+            QPushButton {
+                color: white;
+                border-radius: 10px;
+                padding-left: 10px;
+                padding-right: 10px;
+                padding-top: 4px;
+                padding-bottom: 4px;
+                background-color: rgb(90, 90, 90);
+
+            }
+        """)
+
+
+
+
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
@@ -157,6 +185,8 @@ class Ui_MainWindow(object):
         self.backButton.setText(_translate("MainWindow", "Back"))
         self.newButton.setText(_translate("MainWindow", "New"))
         self.exportButton.setText(_translate("MainWindow", "Export"))
+
+
 
 
 

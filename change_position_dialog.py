@@ -58,6 +58,31 @@ class Ui_Dialog(object):
         spacerItem1 = QtWidgets.QSpacerItem(119, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.gridLayout.addItem(spacerItem1, 1, 2, 1, 1)
 
+
+        Dialog.setStyleSheet("""
+            QDialog {
+                background-color: rgb(55, 64, 88);
+            }
+
+            QLabel {
+                color: white;
+                font-size: 10pt;
+                font-family: Verdana;
+            }
+
+            QPushButton {
+                color: white;
+                border-radius: 10px;
+                padding-left: 10px;
+                padding-right: 10px;
+                padding-top: 4px;
+                padding-bottom: 4px;
+                background-color: rgb(90, 90, 90);
+
+            }
+        """)
+
+
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
 

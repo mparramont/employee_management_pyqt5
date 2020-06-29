@@ -5,6 +5,11 @@
 ##### We will write the application logic in this repository
 https://github.com/terjnh/employee_management_pyqt5
 
+
+###### Run progam with command:
+$ python3.5 main.py
+
+
 - [X] Launching the project
 - [X] QMainWindow communication using signal-slot
 - [X] Windows communication
@@ -36,7 +41,9 @@ https://github.com/terjnh/employee_management_pyqt5
 - [X] Insert valid data
 - [X] Salary statistics chart
 - [X] Total salary per department chart
-- [ ] Conclusion
+- [X] Conclusion
+
+
 
 
 
