@@ -6,7 +6,7 @@
 https://github.com/terjnh/employee_management_pyqt5
 
 
-###### Run progam with command:
+###### Run program with command:
 $ python3.5 main.py
 
 
